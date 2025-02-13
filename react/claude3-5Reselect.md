@@ -50,3 +50,63 @@ Reselect 主要用于优化 Redux 应用程序中基于状态的复杂计算。�
 通过将计算结果缓存在 Reselect 选择器中,你可以减少不必要的组件重新渲染,从而提高 React 应用程序的整体性能。
 
 总的来说,当你需要在 Redux 应用程序中执行复杂的、基于状态的计算时,Reselect 可以帮助你优化性能。它特别适用于处理嵌套数据、计算密集型任务、多状态片段计算以及大型列表数据等场景。通过使用 Reselect,你可以减少重复计算,提高 React 组件的渲染效率,从而改善应用程序的整体性能和响应速度。
+使用 Reselect 通常包括以下几个步骤:
+
+1. **引入 Reselect**
+
+首先,你需要在你的项目中安装 Reselect 库,并将其导入到你的文件中。
+
+```javascript
+import { createSelector } from 'reselect';
+```
+
+2. **创建简单的选择器**
+
+简单的选择器用于从 Redux 存储中获取特定的状态片段。它们通常是普通的函数,以 store 的 state 作为输入,并返回所需的数据。
+
+```javascript
+const getBooks = state => state.books;
+const getAuthors = state => state.authors;
+```
+
+3. **使用 `createSelector` 创建复杂选择器**
+
+`createSelector` 函数用于创建更复杂的选择器,它接受一个或多个输入选择器函数,以及一个组合器函数。组合器函数将使用输入选择器函数的结果作为参数,并返回最终的计算结果。
+
+```javascript
+const getBooksWithAuthors = createSelector(
+  getBooks,
+  getAuthors,
+  (books, authors) => {
+    // 在这里执行你的复杂计算或转换
+    return books.map(book => ({
+      ...book,
+      author: authors.find(author => author.id === book.authorId)
+    }));
+  }
+);
+```
+
+4. **在组件中使用选择器**
+
+在 React 组件中,你可以使用 `connect` 函数从 Redux 存储中获取选择器的结果,并将其作为 props 传递给组件。
+
+```javascript
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+  booksWithAuthors: getBooksWithAuthors(state)
+});
+
+const BookList = ({ booksWithAuthors }) => (
+  // 使用 booksWithAuthors 渲染你的组件
+);
+
+export default connect(mapStateToProps)(BookList);
+```
+
+5. **组合和复用选择器**
+
+Reselect 的一个强大特性是选择器可以被组合和复用。你可以将一个复杂的选择器分解成多个较小的选择器,然后使用 `createSelector` 将它们组合起来。这种模式可以提高代码的可维护性和可重用性。
+
+通过这些步骤,你可以利用 Reselect 来优化你的 Redux 应用程序中基于状态的复杂计算。记住,只有当输入状态发生变化时,Reselect 才会重新计算选择器的结果,从而避免了不必要的重复计算。
