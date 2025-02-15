@@ -154,6 +154,7 @@ BFC在开发中主要解决两个问题：
 那么如果我们让两个box是不同的BFC呢？ 那么就可以解决折叠问题。
 
 (图片：Before 和 After 的对比，展示 margin 折叠和不折叠的效果)
+<img width="393" alt="image" src="https://github.com/user-attachments/assets/d1139e01-eb5c-4967-80a6-e75d7ed5a20c" />
 
 ```html
 <!DOCTYPE html>
