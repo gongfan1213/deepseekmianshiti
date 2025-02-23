@@ -2,7 +2,10 @@
 # wiki
 https://github.com/gongfan1213/deepseekmianshiti/wiki
 # 飞书
-https://fcnn3hcrea0m.feishu.cn/wiki/MOe0w2fxJi4qDjkm8VbcfBcOnFf?fromScene=spaceOverview
+https://fcnn3hcrea0m.feishu.cn/wiki/space/7453291068646539266?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home
+
+# 面试题目
+https://fcnn3hcrea0m.feishu.cn/wiki/space/7451194568686059522?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home
 # 面试知识点
 > 💭 嗯，我现在得帮用户整理前端开发工程师面试中常考的知识点。用户只需要列举，不用详细讲解。首先，我需要仔细看一下提供的搜索结果中的各个网页摘要，提取出里面提到的知识点。
 >
